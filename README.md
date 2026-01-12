@@ -48,49 +48,49 @@ pip install pandas requests rdkit matplotlib
 
 ## Usage Examples
 
-### Scaffold Extraction (for Exact input)
+### Scaffold Extraction (for Data input)
 
 ```bash
-python scaffold.py -i exact/antifungal_smiles.txt -o scaffold/antifungal_smiles_scaffold.txt
-python scaffold.py -i exact/canonical_gen_mol.txt -o scaffold/canonical_gen_mol_scaffold.txt
-python scaffold.py -i exact/screening_top10_broad_spectrum.txt -o scaffold/screening_top10_broad_spectrum_scaffold.txt
-python scaffold.py -i exact/all_single_exact.txt -o scaffold/all_single_scaffold.txt
+python scaffold.py -i data/generated_set/tanimoto_ro5_compliant_molecules.txt -o scaffold/generated_set/tanimoto_ro5_compliant_molecules_scaffold.txt
+python scaffold.py -i data/generated_set/all_generated_mol.txt -o scaffold/generated_set/all_generated_mol_scaffold.txt
+python scaffold.py -i data/generated_set/top10_molecules.txt -o scaffold/generated_set/top10_molecules_scaffold.txt
+python scaffold.py -i data/training_dataset/training_dataset.txt -o scaffold/training_dataset/training_dataset_scaffold.txt
 ```
 
 ### Similarity Search - EXACT
 
 ```bash
-python similar_flag.py -i exact/antifungal_smiles.txt -o similarity/antifungal_smiles_flag.csv -t 95
-python similar_flag.py -i exact/canonical_gen_mol.txt -o similarity/canonical_gen_mol_flag.csv -t 95
-python similar_flag.py -i exact/screening_top10_broad_spectrum.txt -o similarity/screening_top10_broad_spectrum_flag.csv -t 95
-python similar_flag.py -i exact/all_single_exact.txt -o similarity/all_single_exact_flag.csv -t 95
+python similar_flag.py -i data/generated_set/tanimoto_ro5_compliant_molecules.txt -o similarity/generated_set/tanimoto_ro5_compliant_molecules_exact_flag.csv -t 95
+python similar_flag.py -i data/generated_set/all_generated_mol.txt -o similarity/generated_set/all_generated_mol_exact_flag.csv -t 95
+python similar_flag.py -i data/generated_set/top10_molecules.txt -o similarity/generated_set/top_10_molecules_exact_flag.csv -t 95
+python similar_flag.py -i data/training_dataset/training_dataset.txt -o similarity/training_dataset/training_dataset_exact_flag.csv -t 95
 ```
 
 ### Similarity Search - SCAFFOLD
 
 ```bash
-python similar_flag.py -i scaffold/antifungal_smiles_scaffold.txt -o similarity/antifungal_smiles_scaffold_flag.csv -t 95
-python similar_flag.py -i scaffold/canonical_gen_mol_scaffold.txt -o similarity/canonical_gen_mol_scaffold_flag.csv -t 95
-python similar_flag.py -i scaffold/screening_top10_broad_spectrum_scaffold.txt -o similarity/screening_top10_broad_spectrum_scaffold_flag.csv -t 95
-python similar_flag.py -i scaffold/all_single_scaffold.txt -o similarity/all_single_scaffold_flag.csv -t 95
+python similar_flag.py -i scaffold/generated_set/tanimoto_ro5_compliant_molecules_scaffold.txt -o similarity/generated_set/tanimoto_ro5_compliant_molecules_scaffold_flag.csv -t 95
+python similar_flag.py -i scaffold/generated_set/all_generated_mol_scaffold.txt -o similarity/generated_set/all_generated_mol_scaffold_flag.csv -t 95
+python similar_flag.py -i scaffold/generated_set/top10_molecules_scaffold.txt -o similarity/generated_set/top10_molecules_scaffold_flag.csv -t 95
+python similar_flag.py -i scaffold/training_dataset/training_dataset_scaffold.txt -o similarity/training_dataset/training_dataset_scaffold_flag.csv -t 95
 ```
 
 ### Substructure Search - EXACT
 
 ```bash
-python substructure_flag.py -i exact/antifungal_smiles.txt -o substructure/antifungal_smiles_flag.csv
-python substructure_flag.py -i exact/canonical_gen_mol.txt -o substructure/canonical_gen_mol_flag.csv
-python substructure_flag.py -i exact/screening_top10_broad_spectrum.txt -o substructure/screening_top10_broad_spectrum_flag.csv
-python substructure_flag.py -i exact/all_single_exact.txt -o substructure/all_single_exact_flag.csv
+python substructure_flag.py -i data/generated_set/tanimoto_ro5_compliant_molecules.txt -o substructure/generated_set/tanimoto_ro5_compliant_molecules_exact_exact_flag.csv
+python substructure_flag.py -i data/generated_set/all_generated_mol.txt -o substructure/generated_set/all_generated_mol_exact_flag.csv
+python substructure_flag.py -i data/generated_set/top10_molecules.txt -o substructure/generated_set/top_10_molecules_exact_flag.csv
+python substructure_flag.py -i data/training_dataset/training_dataset.txt -o substructure/training_dataset/training_dataset_exact_flag.csv
 ```
 
 ### Substructure Search - SCAFFOLD
 
 ```bash
-python substructure_flag.py -i scaffold/antifungal_smiles_scaffold.txt -o substructure/antifungal_smiles_scaffold_flag.csv
-python substructure_flag.py -i scaffold/canonical_gen_mol_scaffold.txt -o substructure/canonical_gen_mol_scaffold_flag.csv
-python substructure_flag.py -i scaffold/screening_top10_broad_spectrum_scaffold.txt -o substructure/screening_top10_broad_spectrum_scaffold_flag.csv
-python substructure_flag.py -i scaffold/all_single_scaffold.txt -o substructure/all_single_scaffold_flag.csv
+python substructure_flag.py -i scaffold/generated_set/tanimoto_ro5_compliant_molecules_scaffold.txt -o substructure/generated_set/tanimoto_ro5_compliant_molecules_scaffold_flag.csv
+python substructure_flag.py -i scaffold/generated_set/all_generated_mol_scaffold.txt -o substructure/generated_set/all_generated_mol_scaffold_flag.csv
+python substructure_flag.py -i scaffold/generated_set/top10_molecules_scaffold.txt -o substructure/generated_set/top_10_molecules_scaffold_flag.csv
+python substructure_flag.py -i scaffold/training_dataset/training_dataset_scaffold.txt -o substructure/training_dataset/training_dataset_scaffold_flag.csv
 ```
 
 ---
@@ -120,23 +120,81 @@ patent_flag/
 ├── similar_flag.py
 ├── substructure_flag.py
 │
-├── exact/                               # Input SMILES files
-│   ├── antifungal_smiles.txt
-│   ├── canonical_gen_mol.txt
-│   └── screening_top10_broad_spectrum.txt
+├── data/                                # Input SMILES files
+│   ├── generated_set/
+│   │   ├── tanimoto_ro5_compliant_molecules.txt
+│   │   ├── all_generated_mol.txt
+│   │   └── top10_molecules.txt
+│   └── training_dataset/
+│       └── training_dataset.txt
 │
 ├── scaffold/                            # Generated scaffolds
-│   ├── antifungal_smiles_scaffold.txt
-│   └── ...
+│   ├── generated_set/
+│   │   ├── tanimoto_ro5_compliant_molecules_scaffold.txt
+│   │   ├── all_generated_mol_scaffold.txt
+│   │   └── top10_molecules_scaffold.txt
+│   └── training_dataset/
+│       └── training_dataset_scaffold.txt
 │
-└── similarity/                          # Results CSVs
-    ├── antifungal_smiles_flag.csv
-    └── ...
+├── similarity/                          # Similarity search results
+│   ├── generated_set/
+│   │   ├── tanimoto_ro5_compliant_molecules_exact_flag.csv
+│   │   ├── tanimoto_ro5_compliant_molecules_scaffold_flag.csv
+│   │   ├── all_generated_mol_exact_flag.csv
+│   │   ├── all_generated_mol_scaffold_flag.csv
+│   │   ├── top_10_molecules_exact_flag.csv
+│   │   └── top10_molecules_scaffold_flag.csv
+│   └── training_dataset/
+│       ├── training_dataset_exact_flag.csv
+│       └── training_dataset_scaffold_flag.csv
+│
+└── substructure/                        # Substructure search results
+    ├── generated_set/
+    │   ├── tanimoto_ro5_compliant_molecules_exact_exact_flag.csv
+    │   ├── tanimoto_ro5_compliant_molecules_scaffold_flag.csv
+    │   ├── all_generated_mol_exact_flag.csv
+    │   ├── all_generated_mol_scaffold_flag.csv
+    │   ├── top_10_molecules_exact_flag.csv
+    │   └── top_10_molecules_scaffold_flag.csv
+    └── training_dataset/
+        ├── training_dataset_exact_flag.csv
+        └── training_dataset_scaffold_flag.csv
 ```
 
 ---
 
-## Key Arguments
+## Visualization Scripts
+
+Generate comparison charts for analysis results:
+
+### Scaffold Comparison
+
+```bash
+python visualizations/scaffold_comparison.py
+python visualizations/scaffold_comparison.py -d data -s scaffold -o output.png
+```
+
+Compares non-empty entries in original data vs scaffold outputs.
+
+### Similarity Search Comparison
+
+```bash
+python visualizations/similarity_comparison.py
+python visualizations/similarity_comparison.py -s similarity -o output.png
+```
+
+Visualizes patent hit rates for exact vs scaffold similarity searches (Tanimoto threshold: 95%).
+
+### Substructure Search Comparison
+
+```bash
+python visualizations/substructure_comparison.py
+python visualizations/substructure_comparison.py -s substructure -o output.png
+```
+
+Visualizes patent hit rates for exact vs scaffold substructure searches.
+
+---
 
 **scaffold.py**
 
